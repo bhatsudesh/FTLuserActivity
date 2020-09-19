@@ -5,12 +5,12 @@ import 'react-calendar/dist/Calendar.css';
 const Modal = ({ closeModal, activeTimeResult, clickHandler }) => {
     return (
         <div
-            className="flex h-full w-full fixed top-0 left-0 bg-transparent-black justify-center items-center z-50"
+            className="flex h-full w-full fixed top-0 left-0 bg-transparent-black justify-center items-center z-50 shadow-lg"
             style={{
                 backgroundColor: "#00000030",
             }}
         >
-            <div className="block bg-white w-11/12 md:w-2/3 lg:w-2/4 mx-auto my-4 py-4 max-h-full overflow-y-auto relative rounded-lg">
+            <div className="block bg-white w-11/12 md:w-2/3 lg:w-2/4 mx-auto my-4 py-4 max-h-full overflow-y-auto relative rounded-rd">
                 <button
                     onClick={closeModal}
                     className="absolute top-0 right-0 p-2 focus:outline-none"
@@ -34,10 +34,9 @@ const Modal = ({ closeModal, activeTimeResult, clickHandler }) => {
                                     User Periods of Activity <span className="text-xs font-hairline"></span>
                                 </h2>
                             </span>
-                            {   
+                            {
                                 (activeTimeResult != '') ? (
-                                activeTimeResult.map((time) => (
-                                    
+                                    activeTimeResult.map((time) => (
                                         <table className="table-auto border-collapse w-full p-2" key={time.start_time}>
                                             <thead>
                                                 <tr className="rounded-lg text-sm font-medium text-gray-700 text-left bg-gray-200">
@@ -58,9 +57,9 @@ const Modal = ({ closeModal, activeTimeResult, clickHandler }) => {
                                     ))
 
                                 ) : (
-                                    <h2 className="text-center text-base font-bold text-red-600 pb-5">
-                                        No Record Found
-                                    </h2>)
+                                        <h2 className="text-center text-base font-bold text-red-600 pb-5">
+                                            No Record Found
+                                        </h2>)
                             }
                         </div>
                         <div className="max-w-sm">

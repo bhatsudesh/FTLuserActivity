@@ -39,20 +39,8 @@ const Dashboard = () => {
     return (
         <div>
             {/* wave animation start */}
-            <div className="header w-full">
-                <div className="">
-                    <NavBar
-                        onFilter={handleFilter} />
-                </div>
-
-                <section className="px-3 lg:px-48 mt-20 lg:mt-32">
-                    <h2 className="text-left font-medium text-base lg:text-lg pl-1 text-white tracking-tight mb-2 mt-5">
-                        FTL Users
-                    </h2>
-                    <hr />
-                </section>
-
-                <div className="pt-48 relative">
+            <div className="fixed w-full bg-gradient-to-r from-primary to-secondary">
+                <div className="mt-64">
                     <svg className="waves" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shapeRendering="auto">
                         <defs>
                             <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
@@ -67,24 +55,34 @@ const Dashboard = () => {
                 </div>
             </div >
             {/* wave animation end */}
+            <div className="absolute">
+                <NavBar
+                    onFilter={handleFilter} />
+                <section className="px-3 lg:px-48 mt-20 lg:mt-32 mb-12 lg:mb-20">
+                    <h2 className="text-left font-medium text-base lg:text-lg pl-1 text-white tracking-tight mb-2 mt-5">
+                        FTL Users
+                    </h2>
+                    <hr />
+                </section>
 
-            <div className="mt-32 lg:mt-48 grid sm:grid-cols-3 md:grid-cols-4 gap-10 lg:px-48 px-3 absolute">
-                {users.map((mems) => (
-                    mems.members
-                        .filter((user) => {
-                            return user.real_name.toLowerCase().includes(filterBy.toLowerCase());
-                        })
-                        .map((user) => (
-                            <UserCard
-                                key={user.id}
-                                name={user.real_name}
-                                Id={user.id}
-                                timeZone={user.tz}
-                                activeClicked={() => { activeClicked(user.activity_periods) }} />
-                        ))
-                ))
+                <div className="-mt-10 lg:-mt-16 grid sm:grid-cols-3 md:grid-cols-4 gap-10 lg:px-48 px-3">
+                    {users.map((mems) => (
+                        mems.members
+                            .filter((user) => {
+                                return user.real_name.toLowerCase().includes(filterBy.toLowerCase());
+                            })
+                            .map((user) => (
+                                <UserCard
+                                    key={user.id}
+                                    name={user.real_name}
+                                    Id={user.id}
+                                    timeZone={user.tz}
+                                    activeClicked={() => { activeClicked(user.activity_periods) }} />
+                            ))
+                    ))
 
-                }
+                    }
+                </div>
             </div>
             {showModal ? (
                 <Modal

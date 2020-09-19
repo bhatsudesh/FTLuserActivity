@@ -33,10 +33,11 @@ const NavBar = ({ onFilter }) => {
                                 <input
                                     type="text"
                                     className="border-b-1 border-white bg-transparent w-20 lg:w-40 px-3 focus:outline-none"
+                                    placeholder="Search..."
                                     onChange={onFilter}
                                 />
                             </span>
-                        ) : <></>
+                        ) : null
                 }
                 <span onClick={() => setSearchTab(!searchTab)}>
                     {
@@ -52,7 +53,6 @@ const NavBar = ({ onFilter }) => {
                                 </svg>
                             )
                     }
-
                 </span>
             </div>
         </nav>
